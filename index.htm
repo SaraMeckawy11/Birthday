@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Birthday Malak!</title>
+
+  <!-- Tailwind CDN (for utility classes) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind theme extension -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'mauve-50': '#F6F0F9',
+            'mauve-100': '#EDE4F3',
+            'mauve-200': '#E0D1EB',
+            'mauve-300': '#CDB4DB',
+            'mauve-400': '#B39BC8',
+            'mauve-500': '#9A7DB5',
+            'mauve-600': '#8461A3',
+            'mauve-700': '#6C4E8A',
+            'mauve-800': '#563B70',
+            'lavender-light': '#EDE6F9',
+            'lavender-dark': '#C5B0E3',
+            'off-white': '#FAF9F6'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root{
+      --mauve-50: #F6F0F9;
+      --mauve-100: #EDE4F3;
+      --mauve-200: #E0D1EB;
+      --mauve-300: #CDB4DB;
+      --mauve-400: #B39BC8;
+      --mauve-500: #9A7DB5;
+      --mauve-600: #8461A3;
+      --mauve-700: #6C4E8A;
+      --mauve-800: #563B70;
+      --lavender-light: #EDE6F9;
+      --off-white: #FAF9F6;
+      --glass: rgba(255,255,255,0.6);
+    }
+
+    html,body{
+      height:100%;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--mauve-50);
+      color: var(--mauve-800);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* ---------- Shared UI effects ---------- */
+    .card-hover {
+      transition: transform .32s cubic-bezier(.2,.9,.2,1), box-shadow .32s;
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 40px rgba(86,59,112,0.12);
+    }
+    .card-hover::before {
+      content:'';
+      position:absolute; inset:0;
+      background: linear-gradient(90deg, transparent, rgba(197,176,227,0.2), transparent);
+      pointer-events:none;
+      transform: translateX(-100%);
+      transition: transform .6s ease;
+    }
+    .card-hover:hover::before { transform: translateX(100%); }
+
+    .floating { animation: floating 3s ease-in-out infinite; }
+    @keyframes floating {
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(-8px); }
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--mauve-700), var(--mauve-400));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 4s ease-in-out infinite;
+    }
+    @keyframes gradientShift {
+      0%,100%{ background-position: 0% 50% }
+      50%{ background-position: 100% 50% }
+    }
+
+    /* ---------- Sparkles ---------- */
+    .sparkle {
+      position: absolute;
+      width: 6px; height:6px;
+      background: var(--mauve-300);
+      border-radius: 999px;
+      opacity: 0;
+      animation: sparkleFloat 5s linear infinite;
+      pointer-events: none;
+      filter: blur(.2px);
+    }
+    @keyframes sparkleFloat {
+      0%{ transform: translateY(100vh) rotate(0); opacity: 0; }
+      6%{ opacity: 1; }
+      90%{ opacity: 1; }
+      100%{ transform: translateY(-120px) rotate(360deg); opacity: 0; }
+    }
+
+    /* ---------- Film strip ---------- */
+    .film-strip{
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(250,247,252,0.95));
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 8px 30px rgba(86,59,112,0.06);
+      border: 1px solid rgba(140,116,167,0.08);
+      overflow: hidden;
+    }
+    .film-header{
+      display:inline-block;
+      padding:6px 12px;
+      font-family: "Courier New", monospace;
+      font-weight:700;
+      color: var(--mauve-700);
+      background: rgba(197,176,227,0.16);
+      border-radius: 999px;
+      font-size: 13px;
+      margin-bottom: 14px;
+      letter-spacing: 1px;
+    }
+    .film-frames{
+      display:flex;
+      gap:12px;
+      padding: 8px 4px;
+      align-items:center;
+    }
+
+    .film-scroll-container {
+      display:flex;
+      gap:12px;
+      align-items:center;
+      animation: filmScroll 28s linear infinite;
+    }
+    .film-scroll-container.paused { animation-play-state: paused; }
+
+    @keyframes filmScroll {
+      0%{ transform: translateX(0); }
+      100%{ transform: translateX(-50%); }
+    }
+
+    .film-frame{
+      width: 280px;
+      height: 175px;
+      border-radius: 10px;
+      overflow:hidden;
+      flex-shrink:0;
+      background:white;
+      border: 4px solid #fff;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      position: relative;
+      cursor:pointer;
+      transition: transform .28s ease, box-shadow .28s ease;
+    }
+    .film-frame:hover{
+      transform: scale(1.05);
+      box-shadow: 0 18px 40px rgba(154,125,181,0.14);
+    }
+    .film-photo{
+      width:100%; height:100%; object-fit: cover; display:block;
+      filter: saturate(.98) contrast(1.03);
+      transition: filter .28s ease, transform .3s ease;
+    }
+    .film-frame:hover .film-photo{ transform: scale(1.04); filter: none; }
+
+    .frame-number{
+      position:absolute; top:-16px; left:10px;
+      background: var(--mauve-800); color: var(--mauve-50);
+      font-family: "Courier New", monospace; font-size: 11px;
+      padding:4px 8px; border-radius:6px; font-weight:700;
+      box-shadow: 0 6px 14px rgba(86,59,112,0.08);
+    }
+
+    /* overlay */
+    .image-overlay{
+      position:absolute; inset:0;
+      display:flex; align-items:center; justify-content:center; text-align:center;
+      padding:1rem; gap:.6rem; flex-direction:column;
+      background: linear-gradient(180deg, rgba(108,78,138,0.92), rgba(96,69,130,0.9));
+      color:white; opacity:0; transition: opacity .28s ease;
+    }
+    .image-overlay.active{ opacity:1; }
+
+    /* modal */
+    .modal{
+      display:none; position:fixed; inset:0; z-index:60;
+      align-items:center; justify-content:center;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(8px);
+      padding: 20px;
+    }
+    .modal.active{ display:flex; }
+    .modal-card{
+      background: white; border-radius: 16px;
+      max-width: 920px; width:100%; overflow:hidden;
+      box-shadow: 0 20px 60px rgba(86,59,112,0.14);
+      border: 1px solid rgba(140,116,167,0.06);
+    }
+    .close-modal{
+      position:absolute; right: 14px; top:14px;
+      width:42px;height:42px;border-radius:999px;
+      display:flex; align-items:center; justify-content:center; cursor:pointer;
+      border:1px solid rgba(140,116,167,0.14); background: rgba(197,176,227,0.12);
+      color: var(--mauve-700); font-size:18px;
+    }
+    .close-modal:hover{ background: rgba(197,176,227,0.18); transform: translateY(-2px); }
+
+    /* confetti */
+    .confetti-container{ position: fixed; inset:0; pointer-events:none; z-index:70; overflow:visible; }
+    .confetti{
+      position:absolute; width:10px; height:12px; opacity:0; transform-origin:center;
+      border-radius:2px; will-change: transform, opacity;
+    }
+    @keyframes confettiFall {
+      0%{ transform: translateY(-80px) rotate(0deg); opacity:1; }
+      70%{ opacity:1; }
+      100%{ transform: translateY(110vh) rotate(720deg); opacity:0; }
+    }
+
+    /* responsiveness tweaks */
+    @media (max-width:768px){
+      .film-frame{ width: 200px; height: 132px; }
+      .frame-number{ font-size:9px; padding:2px 6px; top:-12px; left:8px; }
+      .film-scroll-container{ gap:10px; }
+      .gradient-text{ font-size: 1.6rem; }
+    }
+
+    /* subtle animations */
+    .fade-in{ opacity:0; transform: translateY(18px); animation: fadeIn .6s ease forwards; }
+    @keyframes fadeIn { to { opacity:1; transform: translateY(0); } }
+
+    .bounce-in { animation: bounceIn .7s cubic-bezier(.2,1.05,.3,1) both; }
+    @keyframes bounceIn { 0%{ transform: scale(.9); opacity:0 } 60%{ transform: scale(1.03) } 100%{ transform: scale(1); opacity:1 } }
+  </style>
+</head>
+
+<body class="relative overflow-x-hidden">
+
+  <!-- sparkles (decorative) -->
+  <div class="sparkle" style="left:8%; animation-delay:0s;"></div>
+  <div class="sparkle" style="left:22%; animation-delay:-1.2s;"></div>
+  <div class="sparkle" style="left:36%; animation-delay:-2.1s;"></div>
+  <div class="sparkle" style="left:50%; animation-delay:-0.7s;"></div>
+  <div class="sparkle" style="left:68%; animation-delay:-1.9s;"></div>
+  <div class="sparkle" style="left:82%; animation-delay:-0.3s;"></div>
+
+  <!-- Confetti container -->
+  <div class="confetti-container" id="confettiContainer" aria-hidden="true"></div>
+
+  <!-- Page content -->
+  <div class="min-h-screen relative z-10">
+
+    <!-- Header -->
+    <header class="text-center py-16 px-6">
+      <h1 class="text-4xl md:text-6xl font-extralight mb-4 bounce-in gradient-text">
+        Happy Birthday Malak! 🎂
+      </h1>
+      <p class="text-base md:text-lg text-mauve-600 max-w-2xl mx-auto leading-relaxed floating">
+        Celebrating another beautiful year of your journey. Today is for love, laughter, and lifelong memories.
+      </p>
+
+      <!-- action buttons -->
+      <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4 items-center px-4">
+        <button aria-label="Open Memory Film Strip" onclick="openPhotoGallery()" class="w-64 card-hover bg-white border border-mauve-200 text-mauve-700 py-3 rounded-xl shadow-sm hover:shadow-md transition">
+          🎬 Memory Film Strip
+        </button>
+        <button aria-label="Open Birthday Wishes" onclick="openWishesSection()" class="w-64 card-hover bg-white border border-mauve-200 text-mauve-700 py-3 rounded-xl shadow-sm hover:shadow-md transition">
+          💝 Birthday Wishes
+        </button>
+        <button aria-label="Open Video Messages" onclick="openVideoSection()" class="w-64 card-hover bg-white border border-mauve-200 text-mauve-700 py-3 rounded-xl shadow-sm hover:shadow-md transition">
+          🎥 Video Messages
+        </button>
+      </div>
+
+      <div class="mt-6">
+        <div onclick="scrollToSection('gallery');" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-mauve-200 text-mauve-700 cursor-pointer select-none">
+          <span>Scroll for more surprises</span>
+          <span class="text-mauve-500">↓</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Gallery Section -->
+    <main class="max-w-7xl mx-auto px-6 lg:px-8 pb-12">
+
+      <section id="gallery" class="py-12">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl md:text-3xl font-medium mb-2 gradient-text">Malak's Photo Gallery</h2>
+          <p class="text-mauve-600">Vintage film-inspired strip with favorite moments</p>
+        </div>
+
+        <div class="film-strip card-hover fade-in" style="animation-delay:.1s;">
+          <div class="film-header">MALAK'S MEMORIES • ROLL 001</div>
+
+          <div class="film-frames overflow-hidden">
+            <div id="filmScrollContainer" class="film-scroll-container" aria-hidden="false">
+              <!-- REPEATED FRAMES: keep an initial set then duplicate them below to create a seamless loop -->
+              <!-- Frame template: ensure each has unique content or random param for images if needed -->
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">01</div>
+                <img class="film-photo" src="https://picsum.photos/400/300?random=1" alt="Memory 01" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">Achievement</h3>
+                  <p class="text-sm opacity-90">Malak's proud moment</p>
+                  <div class="mt-2 text-xs opacity-80">Click to close</div>
+                </div>
+              </div>
+
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
+                <img class="film-photo" src="https://picsum.photos/400/300?random=2" alt="Memory 02" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">Celebration</h3>
+                  <p class="text-sm opacity-90">Special moments with loved ones</p>
+                  <div class="mt-2 text-xs opacity-80">Click to close</div>
+                </div>
+              </div>
+
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">03</div>
+                <img class="film-photo" src="https://picsum.photos/400/300?random=3" alt="Memory 03" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">Joy</h3>
+                  <p class="text-sm opacity-90">Moments of happiness</p>
+                  <div class="mt-2 text-xs opacity-80">Click to close</div>
+                </div>
+              </div>
+
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">04</div>
+                <img class="film-photo" src="https://picsum.photos/400/300?random=4" alt="Memory 04" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">Adventure</h3>
+                  <p class="text-sm opacity-90">Exploring new experiences</p>
+                  <div class="mt-2 text-xs opacity-80">Click to close</div>
+                </div>
+              </div>
+
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">05</div>
+                <img class="film-photo" src="https://picsum.photos/400/300?random=5" alt="Memory 05" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">Friendship</h3>
+                  <p class="text-sm opacity-90">Beautiful bonds and connections</p>
+                  <div class="mt-2 text-xs opacity-80">Click to close</div>
+                </div>
+              </div>
+
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">06</div>
+                <img class="film-photo" src="https://picsum.photos/400/300?random=6" alt="Memory 06" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">Success</h3>
+                  <p class="text-sm opacity-90">Achieving dreams and goals</p>
+                  <div class="mt-2 text-xs opacity-80">Click to close</div>
+                </div>
+              </div>
+
+              <!-- duplicate frames for seamless loop -->
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">07</div>
+                <img class="film-photo" src="https://picsum.photos/400/300?random=7" alt="Memory 07" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">Laughter</h3>
+                  <p class="text-sm opacity-90">Joyful celebrations</p>
+                  <div class="mt-2 text-xs opacity-80">Click to close</div>
+                </div>
+              </div>
+
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">08</div>
+                <img class="film-photo" src="https://picsum.photos/400/300?random=8" alt="Memory 08" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">Wishes</h3>
+                  <p class="text-sm opacity-90">Making wishes come true</p>
+                  <div class="mt-2 text-xs opacity-80">Click to close</div>
+                </div>
+              </div>
+
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">09</div>
+                <img class="film-photo" src="https://picsum.photos/400/300?random=9" alt="Memory 09" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">Love</h3>
+                  <p class="text-sm opacity-90">Surrounded by love</p>
+                  <div class="mt-2 text-xs opacity-80">Click to close</div>
+                </div>
+              </div>
+
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">10</div>
+                <img class="film-photo" src="https://picsum.photos/400/300?random=10" alt="Memory 10" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">Gratitude</h3>
+                  <p class="text-sm opacity-90">Thankful for another year</p>
+                  <div class="mt-2 text-xs opacity-80">Click to close</div>
+                </div>
+              </div>
+
+              <!-- duplicate the initial frames to make loop seamless -->
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">01</div>
+                <img class="film-photo" src="https://picsum.photos/400/300?random=11" alt="Memory 01b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">Achievement</h3>
+                  <p class="text-sm opacity-90">Malak's proud moment</p>
+                </div>
+              </div>
+
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
+                <img class="film-photo" src="https://picsum.photos/400/300?random=12" alt="Memory 02b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">Celebration</h3>
+                  <p class="text-sm opacity-90">Special moments</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Wishes Section -->
+      <section id="wishesSection" class="mt-12 bg-white/80 backdrop-blur-sm mx-2 sm:mx-6 my-8 rounded-2xl p-8 sm:p-12 shadow-lg border border-mauve-100">
+        <div class="text-center mb-6">
+          <h2 class="text-2xl md:text-3xl font-medium text-mauve-700">💝 Birthday Wishes for Malak</h2>
+          <p class="text-mauve-600 mt-2">Heartfelt messages sent by loved ones</p>
+        </div>
+
+        <div class="max-w-3xl mx-auto grid gap-6">
+          <div class="bg-gradient-to-br from-mauve-50 to-mauve-100 rounded-2xl p-8 border border-mauve-200 card-hover cursor-pointer" onclick="openWishPopup(0)">
+            <div class="text-4xl mb-4">💌</div>
+            <h3 class="text-xl font-semibold text-mauve-800 mb-2">Secret Birthday Messages</h3>
+            <p class="text-mauve-600">Click to read heartfelt wishes from your circle.</p>
+            <div class="mt-4 inline-block bg-gradient-to-r from-mauve-400 to-mauve-500 text-white py-2 px-4 rounded-full text-sm shadow-sm">3 Messages Waiting</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Section -->
+      <section id="videoSection" class="mt-6 mx-2 sm:mx-6 my-8 rounded-2xl p-6 sm:p-10 shadow-xl border border-mauve-200 bg-white/90">
+        <div class="text-center mb-6">
+          <h2 class="text-2xl md:text-3xl font-semibold text-mauve-700">🎥 Birthday Video Message</h2>
+          <p class="text-mauve-600 mt-2">A short, special video for Malak</p>
+        </div>
+
+        <div class="flex justify-center">
+          <div class="max-w-xl w-full card-hover rounded-2xl overflow-hidden border-2 border-mauve-100">
+            <div class="relative aspect-video">
+              <video class="w-full h-full object-cover bg-mauve-100" controls preload="metadata" poster="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800&h=450&fit=crop">
+                <!-- Replace YOUR_VIDEO_URL_HERE.mp4 with your real video path -->
+                <source src="YOUR_VIDEO_URL_HERE.mp4" type="video/mp4">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+
+              <!-- Fallback overlay when video is missing -->
+              <div class="absolute inset-0 flex items-center justify-center text-white" style="display:none;">
+                <div class="text-center">
+                  <div class="text-4xl mb-2">🎥</div>
+                  <div class="font-medium">Replace the source with your video</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 sm:p-6">
+              <h3 class="text-lg font-semibold text-mauve-800 mb-1">Special Birthday Message</h3>
+              <p class="text-mauve-600 text-sm mb-3">A heartfelt video just for Malak 💖</p>
+              <span class="inline-block bg-mauve-200 text-mauve-800 py-1 px-3 rounded-full text-xs font-medium">0:01</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-12 px-6">
+      <p class="text-mauve-500 font-light">Happy Birthday Malak! Make today unforgettable ✨</p>
+    </footer>
+  </div>
+
+  <!-- Wish popup modal (display messages & reveal author) -->
+  <div id="wishPopupModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card relative p-0">
+      <button class="close-modal" aria-label="Close" onclick="closeWishPopup()">×</button>
+      <div class="bg-gradient-to-r from-mauve-50 to-mauve-100 p-6">
+        <h3 id="wishPopupTitle" class="text-lg text-mauve-800 font-semibold">💝 Birthday Message</h3>
+      </div>
+
+      <div class="p-6">
+        <div id="wishPopupText" class="bg-mauve-50 p-6 rounded-xl border border-mauve-100 text-mauve-800 mb-6" style="min-height:90px"></div>
+
+        <div class="flex flex-col sm:flex-row gap-4 items-center justify-between">
+          <div class="flex gap-3">
+            <button id="prevBtn" class="bg-white border border-mauve-200 py-2 px-4 rounded-md text-mauve-700 hover:bg-mauve-50" onclick="previousWish()">← Previous</button>
+            <button id="nextBtn" class="bg-white border border-mauve-200 py-2 px-4 rounded-md text-mauve-700 hover:bg-mauve-50" onclick="nextWish()">Next →</button>
+          </div>
+
+          <div class="text-center">
+            <div id="wishCounter" class="text-mauve-500 text-sm mb-2">1 of 3</div>
+            <button id="popupRevealBtn" class="bg-mauve-500 text-white py-2 px-4 rounded-md shadow-sm" onclick="revealWisherInPopup()">🎭 Guess Who Wrote This?</button>
+            <div id="popupWisher" class="mt-3 hidden bg-mauve-100 text-mauve-800 py-2 px-3 rounded-md font-semibold"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grant wish modal -->
+  <div id="wishModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card relative p-0 max-w-lg">
+      <button class="close-modal" aria-label="Close" onclick="closeWishModal()">×</button>
+      <div class="p-8 text-center">
+        <h2 class="text-2xl font-bold text-mauve-800 mb-3">🎉 Make a Birthday Wish! 🎉</h2>
+        <p class="text-mauve-600 mb-6">Close your eyes, make a wish, and click the magic button!</p>
+        <button class="bg-gradient-to-r from-mauve-500 to-mauve-600 text-white font-semibold py-3 px-6 rounded-2xl shadow-md" onclick="grantWish()">✨ Grant My Wish! ✨</button>
+
+        <div id="wishResult" class="mt-6 text-mauve-700 text-lg"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- small helpful script -->
+  <script>
+    /* ==========================
+       Data
+       ========================== */
+    const wishes = [
+      {
+        text: "Happy Birthday to the most amazing person I know! May your day be filled with love, laughter, and all your favorite things. You deserve the world and more! 💖",
+        author: "Sarah",
+        emoji: "🌟"
+      },
+      {
+        text: "Another year of being absolutely wonderful! We're so proud of the incredible person you've become. Here's to more adventures, dreams coming true, and endless happiness! 🎉",
+        author: "Your Family",
+        emoji: "👨‍👩‍👧‍👦"
+      },
+      {
+        text: "Malak, you light up every room you enter! Your kindness, humor, and beautiful spirit make the world a better place. Wishing you the happiest of birthdays! 🌈",
+        author: "Everyone Who Loves You",
+        emoji: "✨"
+      }
+    ];
+    let currentWishIndex = 0;
+
+    /* ==========================
+       Helpers & UI actions
+       ========================== */
+
+    function scrollToSection(id){
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    function openPhotoGallery(){ scrollToSection('gallery'); createConfetti(); }
+    function openWishesSection(){ scrollToSection('wishesSection'); createConfetti(); }
+    function openVideoSection(){ scrollToSection('videoSection'); setTimeout(()=>createConfetti(), 350); }
+
+    /* ========== Film scroll control ========== */
+    function toggleFilmAnimation(e){
+      const container = document.getElementById('filmScrollContainer');
+      if(!container) return;
+      container.classList.toggle('paused');
+      // prevent event bubbling to document click that hides overlays
+      if(e && e.stopPropagation) e.stopPropagation();
+    }
+
+    function toggleImageOverlay(frame){
+      const overlay = frame.querySelector('.image-overlay');
+      if(!overlay) return;
+
+      // close others
+      document.querySelectorAll('.image-overlay').forEach(o => {
+        if(o !== overlay) o.classList.remove('active');
+      });
+      overlay.classList.toggle('active');
+    }
+
+    // close overlays when clicking outside frames
+    document.addEventListener('click', (e) => {
+      if(!e.target.closest('.film-frame')) {
+        document.querySelectorAll('.image-overlay').forEach(o => o.classList.remove('active'));
+      }
+    });
+
+    // keyboard accessibility: close modals with Escape
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape'){
+        closeWishPopup(); closeWishModal();
+      }
+    });
+
+    /* ========== Wish popup modal ========== */
+    function openWishPopup(index = 0){
+      currentWishIndex = index;
+      updateWishPopup();
+      document.getElementById('wishPopupModal').classList.add('active');
+      document.getElementById('wishPopupModal').setAttribute('aria-hidden', 'false');
+      createConfetti();
+    }
+    function closeWishPopup(){
+      const modal = document.getElementById('wishPopupModal');
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden','true');
+      document.getElementById('popupWisher').classList.add('hidden');
+      document.getElementById('popupRevealBtn').style.display = 'inline-block';
+    }
+    function updateWishPopup(){
+      const wish = wishes[currentWishIndex];
+      document.getElementById('wishPopupText').textContent = wish.text;
+      document.getElementById('wishCounter').textContent = (currentWishIndex + 1) + ' of ' + wishes.length;
+      document.getElementById('prevBtn').disabled = currentWishIndex === 0;
+      document.getElementById('nextBtn').disabled = currentWishIndex === wishes.length - 1;
+      document.getElementById('popupWisher').classList.add('hidden');
+      document.getElementById('popupRevealBtn').style.display = 'inline-block';
+    }
+    function nextWish(){
+      if(currentWishIndex < wishes.length - 1) {
+        currentWishIndex++; updateWishPopup(); createConfetti();
+      }
+    }
+    function previousWish(){
+      if(currentWishIndex > 0) {
+        currentWishIndex--; updateWishPopup(); createConfetti();
+      }
+    }
+    function revealWisherInPopup(){
+      const wish = wishes[currentWishIndex];
+      const wisherEl = document.getElementById('popupWisher');
+      wisherEl.textContent = `${wish.emoji} Written with love by: ${wish.author}`;
+      wisherEl.classList.remove('hidden');
+      document.getElementById('popupRevealBtn').style.display = 'none';
+      createConfetti();
+    }
+
+    /* ========== Wish modal (Grant wish) ========== */
+    function openWishModal(){ document.getElementById('wishModal').classList.add('active'); createConfetti(); }
+    function closeWishModal(){ document.getElementById('wishModal').classList.remove('active'); }
+    function grantWish(){
+      const pool = [
+        "🌟 Your wish for happiness is granted! May joy follow you everywhere!",
+        "💖 Your wish for love is granted! You are surrounded by those who care!",
+        "🎯 Your wish for success is granted! Great things are coming your way!",
+        "🌈 Your wish for adventure is granted! Amazing experiences await!",
+        "✨ Your wish for magic is granted! Every day will sparkle with wonder!"
+      ];
+      const r = pool[Math.floor(Math.random() * pool.length)];
+      document.getElementById('wishResult').textContent = r;
+      createConfetti();
+      setTimeout(() => {
+        closeWishModal();
+        document.getElementById('wishResult').textContent = '';
+      }, 3500);
+    }
+
+    /* ========== Confetti system (light, mauve palette) ========== */
+    function createConfetti() {
+      const container = document.getElementById('confettiContainer');
+      if(!container) return;
+      const count = 18; // subtle burst
+      const colors = ['#D8C1E8','#CDB4DB','#B39BC8','#9A7DB5','#F7EFFF'];
+      for(let i=0;i<count;i++){
+        const el = document.createElement('div');
+        el.className = 'confetti';
+        el.style.left = (10 + Math.random() * 80) + 'vw';
+        el.style.top = (-20 - Math.random()*80) + 'px';
+        el.style.width = (6 + Math.random()*8) + 'px';
+        el.style.height = (8 + Math.random()*10) + 'px';
+        el.style.background = colors[Math.floor(Math.random()*colors.length)];
+        el.style.transform = `rotate(${Math.random()*360}deg)`;
+        el.style.opacity = 1;
+        el.style.zIndex = 9999;
+        el.style.borderRadius = (Math.random() > 0.6 ? '2px' : '50%');
+        const duration = 2200 + Math.random()*800;
+        el.style.animation = `confettiFall ${duration}ms cubic-bezier(.2,.6,.2,1) forwards`;
+        container.appendChild(el);
+        setTimeout(()=> {
+          el.remove();
+        }, duration + 100);
+      }
+    }
+
+    /* ========== Intersection observer to fade in elements as they show ========= */
+    document.addEventListener('DOMContentLoaded', () => {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('fade-in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.fade-in, .film-strip, .card-hover').forEach(el => {
+        io.observe(el);
+      });
+    });
+
+    /* auto-trigger initial confetti on load */
+    window.addEventListener('load', () => {
+      setTimeout(createConfetti, 1200);
+      setTimeout(createConfetti, 2200);
+    });
+
+    /* prevent focus trap / closing when clicking inside modal card */
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if(e.target === modal) {
+          modal.classList.remove('active');
+        }
+      });
+    });
+
+    /* small accessibility improvement: allow Enter to open overlay on focused frames */
+    document.addEventListener('keydown', (e) => {
+      if((e.key === 'Enter' || e.key === ' ') && document.activeElement && document.activeElement.classList.contains('film-frame')){
+        e.preventDefault();
+        toggleImageOverlay(document.activeElement);
+      }
+    });
+
+  </script>
+</body>
+</html>
