@@ -158,8 +158,8 @@
     }
 
     .film-frame{
-      width: 440px;
-      height: 280px;
+      width: 340px;
+      height: 215px;
       border-radius: 10px;
       overflow:hidden;
       flex-shrink:0;
@@ -340,6 +340,22 @@
   text-align: center;
   color: var(--mauve-600);
   margin-top: 0.5rem;
+}
+
+.video-responsive {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-responsive iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .video-card {
@@ -593,7 +609,7 @@
       <div class="emoji">💌</div>
       <h3>Secret Birthday Messages</h3>
       <p>Click to read heartfelt wishes from your circle.</p>
-      <div class="tag">17 Messages Waiting</div>
+      <div class="tag">18 Messages Waiting</div>
     </div>
   </div>
 </section>
@@ -604,13 +620,15 @@
   <p class="section-subtitle">A short, special video for Malak</p>
 
   <div class="video-card">
-    <iframe
-      src="https://drive.google.com/file/d/1lVCTqvAVieB4B9TAe1wFpj0-kSIuAcXJ/preview"
-      width="720" height="360"
-      allow="autoplay"
-      allowfullscreen
-      frameborder="0">
-    </iframe>
+    <div class="video-responsive">
+      <iframe
+        src="https://drive.google.com/file/d/1lVCTqvAVieB4B9TAe1wFpj0-kSIuAcXJ/preview"
+        allow="autoplay"
+        allowfullscreen
+        frameborder="0"
+        loading="lazy">
+      </iframe>
+    </div>
     <div class="video-info">
       <h3>Special Birthday Message</h3>
       <p>A heartfelt video just for Malak 💖</p>
@@ -618,6 +636,7 @@
     </div>
   </div>
 </section>
+
 
 
 
@@ -767,8 +786,25 @@
         emoji: "✨"
       },
       {
-        text: ``,
-        author: "",
+        text: `Happy birthday to the one who listens and never judge! 
+          Youre one of the closest people to my heart, may we always have this special bond. 14 years and counting my sister and bestfriend 🤍
+
+          Hint: ‘yalla beena yalla beenaa’ 
+          ‘wehna bnakol manga (mmkn agy ma3ako)’ 
+          Taaaapp dancingg 😂😂😂
+          bet on it bet on itt 
+          3amalna mosalsal kamell habett gedan
+
+          akher haga w de ahla haga 3amaltaha eny fata7tek b candle 
+          bahebek w bamoot feeky ya ahla w aghlaa maloki f hayaty kolahaa🤍🤍🤍🤍`,
+        author: "Farah tag",
+        emoji: "✨"
+      },
+      {
+        text: `maloukkaaa bnehbekk moooooot happyy birthdayyy 💗 inshaallah all your dreams come true    
+          Made this site for a fun birthday, not just a text! 🎈🫶🏻
+          ayzeen review ala el design hahahahahaaa `,
+        author: "twieeeenz",
         emoji: "✨"
       },
     ];
@@ -839,21 +875,23 @@
       const wish = wishes[currentWishIndex];
       document.getElementById('wishPopupText').textContent = wish.text;
       document.getElementById('wishCounter').textContent = (currentWishIndex + 1) + ' of ' + wishes.length;
-      document.getElementById('prevBtn').disabled = currentWishIndex === 0;
-      document.getElementById('nextBtn').disabled = currentWishIndex === wishes.length - 1;
+      // document.getElementById('prevBtn').disabled = currentWishIndex === 0;
+      // document.getElementById('nextBtn').disabled = currentWishIndex === wishes.length - 1;
       document.getElementById('popupWisher').classList.add('hidden');
       document.getElementById('popupRevealBtn').style.display = 'inline-block';
     }
     function nextWish(){
-      if(currentWishIndex < wishes.length - 1) {
-        currentWishIndex++; updateWishPopup(); createConfetti();
-      }
-    }
-    function previousWish(){
-      if(currentWishIndex > 0) {
-        currentWishIndex--; updateWishPopup(); createConfetti();
-      }
-    }
+  currentWishIndex = (currentWishIndex + 1) % wishes.length;
+  updateWishPopup();
+  createConfetti();
+}
+
+function previousWish(){
+  currentWishIndex = (currentWishIndex - 1 + wishes.length) % wishes.length;
+  updateWishPopup();
+  createConfetti();
+}
+
     function revealWisherInPopup(){
       const wish = wishes[currentWishIndex];
       const wisherEl = document.getElementById('popupWisher');
