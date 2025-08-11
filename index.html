@@ -249,6 +249,144 @@
 
     .bounce-in { animation: bounceIn .7s cubic-bezier(.2,1.05,.3,1) both; }
     @keyframes bounceIn { 0%{ transform: scale(.9); opacity:0 } 60%{ transform: scale(1.03) } 100%{ transform: scale(1); opacity:1 } }
+    
+    /* --- Modernized Wishes Section --- */
+#wishesSection {
+  margin: 3rem auto;
+  background: linear-gradient(180deg, var(--mauve-50), #fff);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  box-shadow: 0 8px 32px rgba(86,59,112,0.08);
+  border: 1px solid var(--mauve-100);
+  max-width: 900px;
+}
+
+#wishesSection .section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--mauve-700);
+  text-align: center;
+}
+
+#wishesSection .section-subtitle {
+  text-align: center;
+  color: var(--mauve-600);
+  margin-top: 0.5rem;
+}
+
+.wish-card {
+  background: white;
+  border: 1px solid var(--mauve-200);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform .3s ease, box-shadow .3s ease;
+  cursor: pointer;
+}
+
+.wish-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(86,59,112,0.12);
+}
+
+.wish-card .emoji {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.wish-card h3 {
+  font-size: 1.25rem;
+  color: var(--mauve-800);
+  margin-bottom: 0.5rem;
+}
+
+.wish-card p {
+  color: var(--mauve-600);
+  margin-bottom: 1rem;
+}
+
+.wish-card .tag {
+  display: inline-block;
+  background: linear-gradient(to right, var(--mauve-400), var(--mauve-500));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 6px rgba(86,59,112,0.16);
+}
+
+/* --- Modernized Video Section --- */
+#videoSection {
+  margin: 3rem auto;
+  background: white;
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 8px 28px rgba(86,59,112,0.08);
+  border: 1px solid var(--mauve-200);
+  max-width: 960px;
+}
+
+#videoSection .section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--mauve-700);
+  text-align: center;
+}
+
+#videoSection .section-subtitle {
+  text-align: center;
+  color: var(--mauve-600);
+  margin-top: 0.5rem;
+}
+
+.video-card {
+  max-width: 720px;
+  margin: 2rem auto 0;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid var(--mauve-100);
+  box-shadow: 0 6px 20px rgba(86,59,112,0.08);
+  transition: box-shadow .3s ease, transform .3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(86,59,112,0.12);
+}
+
+.video-card video {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  background: var(--mauve-100);
+}
+
+.video-card .video-info {
+  padding: 1.5rem;
+}
+
+.video-card .video-info h3 {
+  font-size: 1.25rem;
+  color: var(--mauve-800);
+  margin-bottom: 0.25rem;
+}
+
+.video-card .video-info p {
+  font-size: 0.9rem;
+  color: var(--mauve-600);
+  margin-bottom: 0.75rem;
+}
+
+.video-card .duration {
+  background: var(--mauve-200);
+  color: var(--mauve-800);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
   </style>
 </head>
 
@@ -440,56 +578,39 @@
       </section>
 
       <!-- Wishes Section -->
-      <section id="wishesSection" class="mt-12 bg-white/80 backdrop-blur-sm mx-2 sm:mx-6 my-8 rounded-2xl p-8 sm:p-12 shadow-lg border border-mauve-100">
-        <div class="text-center mb-6">
-          <h2 class="text-2xl md:text-3xl font-medium text-mauve-700">💝 Birthday Wishes for Malak</h2>
-          <p class="text-mauve-600 mt-2">Heartfelt messages sent by loved ones</p>
-        </div>
+<section id="wishesSection">
+  <div class="section-title">💝 Birthday Wishes for Malak</div>
+  <p class="section-subtitle">Heartfelt messages sent by loved ones</p>
 
-        <div class="max-w-3xl mx-auto grid gap-6">
-          <div class="bg-gradient-to-br from-mauve-50 to-mauve-100 rounded-2xl p-8 border border-mauve-200 card-hover cursor-pointer" onclick="openWishPopup(0)">
-            <div class="text-4xl mb-4">💌</div>
-            <h3 class="text-xl font-semibold text-mauve-800 mb-2">Secret Birthday Messages</h3>
-            <p class="text-mauve-600">Click to read heartfelt wishes from your circle.</p>
-            <div class="mt-4 inline-block bg-gradient-to-r from-mauve-400 to-mauve-500 text-white py-2 px-4 rounded-full text-sm shadow-sm">3 Messages Waiting</div>
-          </div>
-        </div>
-      </section>
+  <div style="display:grid; gap:2rem; margin-top:2rem; max-width:600px; margin-left:auto; margin-right:auto;">
+    <div class="wish-card" onclick="openWishPopup(0)">
+      <div class="emoji">💌</div>
+      <h3>Secret Birthday Messages</h3>
+      <p>Click to read heartfelt wishes from your circle.</p>
+      <div class="tag">3 Messages Waiting</div>
+    </div>
+  </div>
+</section>
 
-      <!-- Video Section -->
-      <section id="videoSection" class="mt-6 mx-2 sm:mx-6 my-8 rounded-2xl p-6 sm:p-10 shadow-xl border border-mauve-200 bg-white/90">
-        <div class="text-center mb-6">
-          <h2 class="text-2xl md:text-3xl font-semibold text-mauve-700">🎥 Birthday Video Message</h2>
-          <p class="text-mauve-600 mt-2">A short, special video for Malak</p>
-        </div>
+<!-- Video Section -->
+<section id="videoSection">
+  <div class="section-title">🎥 Birthday Video Message</div>
+  <p class="section-subtitle">A short, special video for Malak</p>
 
-        <div class="flex justify-center">
-          <div class="max-w-xl w-full card-hover rounded-2xl overflow-hidden border-2 border-mauve-100">
-            <div class="relative aspect-video">
-              <video class="w-full h-full object-cover bg-mauve-100" controls preload="metadata" poster="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800&h=450&fit=crop">
-                <!-- Replace YOUR_VIDEO_URL_HERE.mp4 with your real video path -->
-                <source src="YOUR_VIDEO_URL_HERE.mp4" type="video/mp4">
-                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
+  <div class="video-card">
+    <video controls preload="metadata" poster="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800&h=450&fit=crop">
+      <source src="YOUR_VIDEO_URL_HERE.mp4" type="video/mp4">
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-info">
+      <h3>Special Birthday Message</h3>
+      <p>A heartfelt video just for Malak 💖</p>
+      <span class="duration">0:01</span>
+    </div>
+  </div>
+</section>
 
-              <!-- Fallback overlay when video is missing -->
-              <div class="absolute inset-0 flex items-center justify-center text-white" style="display:none;">
-                <div class="text-center">
-                  <div class="text-4xl mb-2">🎥</div>
-                  <div class="font-medium">Replace the source with your video</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-4 sm:p-6">
-              <h3 class="text-lg font-semibold text-mauve-800 mb-1">Special Birthday Message</h3>
-              <p class="text-mauve-600 text-sm mb-3">A heartfelt video just for Malak 💖</p>
-              <span class="inline-block bg-mauve-200 text-mauve-800 py-1 px-3 rounded-full text-xs font-medium">0:01</span>
-            </div>
-          </div>
-        </div>
-      </section>
 
     </main>
 
