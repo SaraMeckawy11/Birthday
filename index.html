@@ -50,13 +50,17 @@
       --glass: rgba(255,255,255,0.6);
     }
 
-    html,body{
-      height:100%;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  /* Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Pacifico&family=Fredoka:wght@400;700&family=Comic+Neue:wght@400;700&family=Quicksand:wght@400;700&family=Dancing+Script:wght@400;700&display=swap');
+
+    html, body {
+      height: 100%;
+      font-family: "Baloo 2", "Pacifico", "Fredoka", "Comic Neue", "Quicksand", "Dancing Script", 
+                  "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background: var(--mauve-50);
       color: var(--mauve-800);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     /* ---------- Shared UI effects ---------- */
@@ -154,7 +158,7 @@
 
     @keyframes filmScroll {
       0%{ transform: translateX(0); }
-      100%{ transform: translateX(-91.71%); }
+      100%{ transform: translateX(-91.715%); }
     }
 
     .film-frame{
@@ -190,21 +194,12 @@
     }
 
    /* Small phones, up to 375px wide */
-@media (max-width: 375px) {
-  .film-frame {
-    width: 140px;
-    height: 160px;
-  }
-}
-
-/* Larger phones, up to 414px wide */
-@media (min-width: 376px) and (max-width: 414px) {
-  .film-frame {
-    width: 160px;
-    height: 190px;
-  }
-}
-
+    @media (max-width: 480px) {
+      .film-frame {
+        width: 240px;   /* proportional to screen */
+        height: 300px;  /* keeps aspect ratio */
+      }
+    }
     /* overlay */
     .image-overlay{
       position:absolute; inset:0;
@@ -280,7 +275,7 @@
 
 #wishesSection .section-title {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--mauve-700);
   text-align: center;
 }
@@ -347,7 +342,7 @@
 
 #videoSection .section-title {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--mauve-700);
   text-align: center;
 }
@@ -487,7 +482,7 @@
 
       <section id="gallery" class="py-12">
         <div class="text-center mb-8">
-          <h2 class="text-2xl md:text-3xl font-medium mb-2 gradient-text"><span class="no-gradient">💖</span>29 Years of Tattoutiii</h2>
+          <h2 class="text-2xl md:text-3xl font-medium mb-2 gradient-text" style="font-family: 'Baloo 2', 'Pacifico', cursive;"><span class="no-gradient">💖</span>29 Years of Tattoutiii</h2>
           <p class="text-mauve-600" ><span class="no-gradient">🌑</span>مراحل اكتمال القمر</p>
         </div>
 
@@ -783,7 +778,7 @@
 
       <!-- Wishes Section -->
 <section id="wishesSection">
-  <div class="section-title">💝 Birthday Wishes for Our Special Tattoutii</div>
+  <div class="section-title" style="font-family: 'Baloo 2', 'Pacifico', cursive;">💝 Birthday Wishes for Our Special Tattoutii</div>
   <p class="section-subtitle">Sent With Love From Your Secret Admirers</p>
 
   <div style="display:grid; gap:2rem; margin-top:2rem; max-width:600px; margin-left:auto; margin-right:auto;">
@@ -798,7 +793,7 @@
 
 <!-- Video Section -->
 <section id="videoSection">
-  <div class="section-title">🎥 The Tattoutiii Show</div>
+  <div class="section-title" style="font-family: 'Baloo 2', 'Pacifico', cursive;">🎥 The Tattoutiii Show</div>
   <!-- <p class="section-subtitle">A short, special video for Our Special Tattoutii</p> -->
 
   <div class="video-card">
