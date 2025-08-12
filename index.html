@@ -148,13 +148,13 @@
       display:flex;
       gap:12px;
       align-items:center;
-      animation: filmScroll 90s linear infinite;
+      animation: filmScroll 120s linear infinite;
     }
     .film-scroll-container.paused { animation-play-state: paused; }
 
     @keyframes filmScroll {
       0%{ transform: translateX(0); }
-      100%{ transform: translateX(-91.75%); }
+      100%{ transform: translateX(-91.71%); }
     }
 
     .film-frame{
@@ -245,11 +245,11 @@
       position:absolute; width:10px; height:12px; opacity:0; transform-origin:center;
       border-radius:2px; will-change: transform, opacity;
     }
-    /* @keyframes confettiFall {
+    @keyframes confettiFall {
       0%{ transform: translateY(-80px) rotate(0deg); opacity:1; }
       70%{ opacity:1; }
       100%{ transform: translateY(110vh) rotate(720deg); opacity:0; }
-    } */
+    }
 
     /* responsiveness tweaks */
     @media (max-width:768px){
@@ -268,7 +268,7 @@
     
     /* --- Modernized Wishes Section --- */
 #wishesSection {
-  margin: 3rem auto;
+  margin: 6rem auto;
     /* background: linear-gradient(180deg, var(--mauve-50), #fff);
     max-width: 900px;
   border-radius: 24px;
@@ -448,12 +448,12 @@
 
     <!-- Header -->
     <header class="text-center py-16 px-6">
-      <h1 class="text-4xl md:text-6xl font-extralight mb-4 bounce-in gradient-text">
-        Happy Birthday Maloukaaa! 🎂
+      <h1 class="text-4xl md:text-6xl font-extralight mb-4 bounce-in gradient-text mb-6">
+        Happy Birthday Maloukaaa! 
         <span class="no-gradient">🎂</span>
       </h1>
       
-      <p class="text-base md:text-lg text-mauve-600 max-w-2xl mx-auto leading-relaxed floating">
+      <p class="text-base md:text-lg text-mauve-600 max-w-2xl mx-auto leading-relaxed floating ">
         A cozy little website made with love, packed with your favorite memories.
       </p>
       <p class="text-base md:text-lg text-mauve-600 max-w-2xl mx-auto leading-relaxed floating">
@@ -487,7 +487,7 @@
 
       <section id="gallery" class="py-12">
         <div class="text-center mb-8">
-          <h2 class="text-2xl md:text-3xl font-medium mb-2 gradient-text"><span class="no-gradient">💖</span> 💖29 Years of Tattoutiii</h2>
+          <h2 class="text-2xl md:text-3xl font-medium mb-2 gradient-text"><span class="no-gradient">💖</span>29 Years of Tattoutiii</h2>
           <p class="text-mauve-600" ><span class="no-gradient">🌑</span>مراحل اكتمال القمر</p>
         </div>
 
@@ -688,6 +688,15 @@
 
               <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
                 <div class="frame-number">02</div>
+                <img class="film-photo" src="assets/h0.jpg" alt="Memory 02b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold"></h3>
+                  <p class="text-sm opacity-90">💖</p>
+                </div>
+              </div>
+
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
                 <img class="film-photo" src="assets/h1.jpg" alt="Memory 02b" onerror="this.style.display='none'">
                 <div class="image-overlay">
                   <h3 class="text-lg font-semibold">2016</h3>
@@ -782,7 +791,7 @@
       <div class="emoji">💌</div>
       <h3>Secret Birthday Messages</h3>
       <!-- <p>Click to read heartfelt wishes from your circle.</p> -->
-      <div class="tag">18 Messages Waiting</div>
+      <div class="tag">21 Messages Waiting</div>
     </div>
   </div>
 </section>
@@ -803,7 +812,7 @@
       </iframe>
     </div>
     <div class="video-info">
-      <h3>Totii And Wiwi Together Forever ♥</h3>
+      <h3>Totii And Wiwi Together Forever<span class="no-gradient">💖</span></h3>
       <p>Birds Of A Feather</p>
       <span class="duration">3:04</span>
     </div>
@@ -974,6 +983,17 @@
         emoji: "✨"
       },
       {
+        text: `To everyone’s personal therapist, thank you for always being there for everyone and for having the best advice ever.
+
+          You might’ve started as my sister’s friend, but now you’re MY best friend 😏 Always the bright, funny soul who makes everything lighter just by being there.
+
+          Thank you for being with me through everything,  you honestly make life better at every stage, the walis person in the group who always knows how to lift everyone’s mood, even when you’re not feeling your best.
+
+          Happy Birthday, Malouka ❤ Love you so, so much ❤`,
+        author: "Yasmine deyaa",
+        emoji: "✨"
+      },
+      {
         text: `maloukkaaa bnehbekk moooooot happyy birthdayyy 💗 inshaallah all your dreams come true    
           Made this site for a fun birthday, not just a text! 🎈🫶🏻
           ayzeen review ala el design hahahahahaaa `,
@@ -1035,7 +1055,7 @@
       updateWishPopup();
       document.getElementById('wishPopupModal').classList.add('active');
       document.getElementById('wishPopupModal').setAttribute('aria-hidden', 'false');
-      createConfetti();
+      // createConfetti();
     }
     function closeWishPopup(){
       const modal = document.getElementById('wishPopupModal');
@@ -1056,13 +1076,13 @@
     function nextWish(){
   currentWishIndex = (currentWishIndex + 1) % wishes.length;
   updateWishPopup();
-  createConfetti();
+  // createConfetti();
 }
 
 function previousWish(){
   currentWishIndex = (currentWishIndex - 1 + wishes.length) % wishes.length;
   updateWishPopup();
-  createConfetti();
+  // createConfetti();
 }
 
     function revealWisherInPopup(){
@@ -1098,7 +1118,7 @@ function previousWish(){
     function createConfetti() {
       const container = document.getElementById('confettiContainer');
       if(!container) return;
-      const count = 18; // subtle burst
+      const count = 10; // subtle burst
       const colors = ['#D8C1E8','#CDB4DB','#B39BC8','#9A7DB5','#F7EFFF'];
       for(let i=0;i<count;i++){
         const el = document.createElement('div');
