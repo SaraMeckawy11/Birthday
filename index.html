@@ -148,18 +148,18 @@
       display:flex;
       gap:12px;
       align-items:center;
-      animation: filmScroll 28s linear infinite;
+      animation: filmScroll 50s linear infinite;
     }
     .film-scroll-container.paused { animation-play-state: paused; }
 
     @keyframes filmScroll {
       0%{ transform: translateX(0); }
-      100%{ transform: translateX(-50%); }
+      100%{ transform: translateX(-100%); }
     }
 
     .film-frame{
-      width: 340px;
-      height: 215px;
+      width: 280px;
+      height: 320px;
       border-radius: 10px;
       overflow:hidden;
       flex-shrink:0;
@@ -188,6 +188,22 @@
       padding:4px 8px; border-radius:6px; font-weight:700;
       box-shadow: 0 6px 14px rgba(86,59,112,0.08);
     }
+
+   /* Small phones, up to 375px wide */
+@media (max-width: 375px) {
+  .film-frame {
+    width: 140px;
+    height: 160px;
+  }
+}
+
+/* Larger phones, up to 414px wide */
+@media (min-width: 376px) and (max-width: 414px) {
+  .film-frame {
+    width: 160px;
+    height: 190px;
+  }
+}
 
     /* overlay */
     .image-overlay{
@@ -476,60 +492,60 @@
               <!-- Frame template: ensure each has unique content or random param for images if needed -->
               <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
                 <div class="frame-number">01</div>
-                <img class="film-photo" src="https://picsum.photos/400/300?random=1" alt="Memory 01" onerror="this.style.display='none'">
+                <img class="film-photo" src="assets/97.jpg" alt="Memory 01" onerror="this.style.display='none'">
                 <div class="image-overlay">
-                  <h3 class="text-lg font-semibold">Achievement</h3>
-                  <p class="text-sm opacity-90">Malak's proud moment</p>
+                  <h3 class="text-lg font-semibold">1997</h3>
+                  <p class="text-sm opacity-90">Ana eh el gabny hena??</p>
                   <div class="mt-2 text-xs opacity-80">Click to close</div>
                 </div>
               </div>
 
               <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
                 <div class="frame-number">02</div>
-                <img class="film-photo" src="https://picsum.photos/400/300?random=2" alt="Memory 02" onerror="this.style.display='none'">
+                <img class="film-photo" src="assets/98.jpg" alt="Memory 02" onerror="this.style.display='none'">
                 <div class="image-overlay">
-                  <h3 class="text-lg font-semibold">Celebration</h3>
-                  <p class="text-sm opacity-90">Special moments with loved ones</p>
+                  <h3 class="text-lg font-semibold">1998</h3>
+                  <p class="text-sm opacity-90">2asset el sha3ry 7ekaya 💇🏻‍♀</p>
                   <div class="mt-2 text-xs opacity-80">Click to close</div>
                 </div>
               </div>
 
               <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
                 <div class="frame-number">03</div>
-                <img class="film-photo" src="https://picsum.photos/400/300?random=3" alt="Memory 03" onerror="this.style.display='none'">
+                <img class="film-photo" src="assets/00.jpg" alt="Memory 03" onerror="this.style.display='none'">
                 <div class="image-overlay">
-                  <h3 class="text-lg font-semibold">Joy</h3>
-                  <p class="text-sm opacity-90">Moments of happiness</p>
+                  <h3 class="text-lg font-semibold">2000</h3>
+                  <p class="text-sm opacity-90">M3aiza masrofi ana fi KG1 !!💰</p>
                   <div class="mt-2 text-xs opacity-80">Click to close</div>
                 </div>
               </div>
 
               <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
                 <div class="frame-number">04</div>
-                <img class="film-photo" src="https://picsum.photos/400/300?random=4" alt="Memory 04" onerror="this.style.display='none'">
+                <img class="film-photo" src="assets/02.jpg" alt="Memory 04" onerror="this.style.display='none'">
                 <div class="image-overlay">
-                  <h3 class="text-lg font-semibold">Adventure</h3>
-                  <p class="text-sm opacity-90">Exploring new experiences</p>
+                  <h3 class="text-lg font-semibold">2002</h3>
+                  <p class="text-sm opacity-90">Eh ra2ioko fi senani? 🦷  </p>
                   <div class="mt-2 text-xs opacity-80">Click to close</div>
                 </div>
               </div>
 
               <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
                 <div class="frame-number">05</div>
-                <img class="film-photo" src="https://picsum.photos/400/300?random=5" alt="Memory 05" onerror="this.style.display='none'">
+                <img class="film-photo" src="assets/021.jpg" alt="Memory 05" onerror="this.style.display='none'">
                 <div class="image-overlay">
-                  <h3 class="text-lg font-semibold">Friendship</h3>
-                  <p class="text-sm opacity-90">Beautiful bonds and connections</p>
+                  <h3 class="text-lg font-semibold">2002</h3>
+                  <p class="text-sm opacity-90">El stomach da le3bety 👙  </p>
                   <div class="mt-2 text-xs opacity-80">Click to close</div>
                 </div>
               </div>
 
               <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
                 <div class="frame-number">06</div>
-                <img class="film-photo" src="https://picsum.photos/400/300?random=6" alt="Memory 06" onerror="this.style.display='none'">
+                <img class="film-photo" src="assets/03.jpg" alt="Memory 06" onerror="this.style.display='none'">
                 <div class="image-overlay">
-                  <h3 class="text-lg font-semibold">Success</h3>
-                  <p class="text-sm opacity-90">Achieving dreams and goals</p>
+                  <h3 class="text-lg font-semibold">2003</h3>
+                  <p class="text-sm opacity-90">Yali 3al ter3a 7awed 3al male7 👩‍🌾</p>
                   <div class="mt-2 text-xs opacity-80">Click to close</div>
                 </div>
               </div>
@@ -537,40 +553,59 @@
               <!-- duplicate frames for seamless loop -->
               <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
                 <div class="frame-number">07</div>
-                <img class="film-photo" src="https://picsum.photos/400/300?random=7" alt="Memory 07" onerror="this.style.display='none'">
+                <img class="film-photo" src="assets/05.jpg" alt="Memory 07" onerror="this.style.display='none'">
                 <div class="image-overlay">
-                  <h3 class="text-lg font-semibold">Laughter</h3>
-                  <p class="text-sm opacity-90">Joyful celebrations</p>
+                  <h3 class="text-lg font-semibold">2005</h3>
+                  <p class="text-sm opacity-90">Emta sedry yekbar? 🤔</p>
                   <div class="mt-2 text-xs opacity-80">Click to close</div>
                 </div>
               </div>
 
               <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
                 <div class="frame-number">08</div>
-                <img class="film-photo" src="https://picsum.photos/400/300?random=8" alt="Memory 08" onerror="this.style.display='none'">
+                <img class="film-photo" src="assets/06.jpg" alt="Memory 08" onerror="this.style.display='none'">
                 <div class="image-overlay">
-                  <h3 class="text-lg font-semibold">Wishes</h3>
-                  <p class="text-sm opacity-90">Making wishes come true</p>
+                  <h3 class="text-lg font-semibold">2006</h3>
+                  <p class="text-sm opacity-90">Wasa3 ashan haffasy💨  </p>
                   <div class="mt-2 text-xs opacity-80">Click to close</div>
                 </div>
               </div>
 
               <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
                 <div class="frame-number">09</div>
-                <img class="film-photo" src="https://picsum.photos/400/300?random=9" alt="Memory 09" onerror="this.style.display='none'">
+                <img class="film-photo" src="assets/07.jpg" alt="Memory 09" onerror="this.style.display='none'">
                 <div class="image-overlay">
-                  <h3 class="text-lg font-semibold">Love</h3>
-                  <p class="text-sm opacity-90">Surrounded by love</p>
+                  <h3 class="text-lg font-semibold">2007</h3>
+                  <p class="text-sm opacity-90">Ebnak yelzamni ya hima💍</p>
+                  <div class="mt-2 text-xs opacity-80">Click to close</div>
+                </div>
+              </div>
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">09</div>
+                <img class="film-photo" src="assets/09.jpg" alt="Memory 09" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">2009</h3>
+                  <p class="text-sm opacity-90">Curly Hair routine from 2009 ya gahla menek liha</p>
+                  <div class="mt-2 text-xs opacity-80">Click to close</div>
+                </div>
+              </div>
+
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">09</div>
+                <img class="film-photo" src="assets/13.jpg" alt="Memory 09" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">2013</h3>
+                  <p class="text-sm opacity-90">Ana leh 7asa eni haigili salibi fl safareya di </p>
                   <div class="mt-2 text-xs opacity-80">Click to close</div>
                 </div>
               </div>
 
               <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
                 <div class="frame-number">10</div>
-                <img class="film-photo" src="https://picsum.photos/400/300?random=10" alt="Memory 10" onerror="this.style.display='none'">
+                <img class="film-photo" src="assets/19.jpg" alt="Memory 10" onerror="this.style.display='none'">
                 <div class="image-overlay">
-                  <h3 class="text-lg font-semibold">Gratitude</h3>
-                  <p class="text-sm opacity-90">Thankful for another year</p>
+                  <h3 class="text-lg font-semibold">2019</h3>
+                  <p class="text-sm opacity-90">Yarab ashtaghal m3 ghada wali!</p>
                   <div class="mt-2 text-xs opacity-80">Click to close</div>
                 </div>
               </div>
@@ -578,18 +613,148 @@
               <!-- duplicate the initial frames to make loop seamless -->
               <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
                 <div class="frame-number">01</div>
-                <img class="film-photo" src="https://picsum.photos/400/300?random=11" alt="Memory 01b" onerror="this.style.display='none'">
+                <img class="film-photo" src="assets/21.jpg" alt="Memory 01b" onerror="this.style.display='none'">
                 <div class="image-overlay">
-                  <h3 class="text-lg font-semibold">Achievement</h3>
-                  <p class="text-sm opacity-90">Malak's proud moment</p>
+                  <h3 class="text-lg font-semibold">2021</h3>
+                  <p class="text-sm opacity-90">3amalt m7atet metro mafish ahla men keda 🚂</p>
                 </div>
               </div>
 
               <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
                 <div class="frame-number">02</div>
-                <img class="film-photo" src="https://picsum.photos/400/300?random=12" alt="Memory 02b" onerror="this.style.display='none'">
+                <img class="film-photo" src="assets/22.jpg" alt="Memory 02b" onerror="this.style.display='none'">
                 <div class="image-overlay">
-                  <h3 class="text-lg font-semibold">Celebration</h3>
+                  <h3 class="text-lg font-semibold">2022</h3>
+                  <p class="text-sm opacity-90">Zehe2t mn el shohra bgad euf!! Eh ra2ioko fi shantet okhtein? 👯‍♀</p>
+                </div>
+              </div>
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
+                <img class="film-photo" src="assets/23.jpg" alt="Memory 02b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">2023</h3>
+                  <p class="text-sm opacity-90">Ana mzabata m3 hima mn 2006 walla ww23t ya bobo</p>
+                </div>
+              </div>
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
+                <img class="film-photo" src="assets/231.jpg" alt="Memory 02b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">2023</h3>
+                  <p class="text-sm opacity-90">مزارع دينا ترحب بكم </p>
+                </div>
+              </div>
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
+                <img class="film-photo" src="assets/24.jpg" alt="Memory 02b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">2024</h3>
+                  <p class="text-sm opacity-90">Hana el tagy</p>
+                </div>
+              </div>
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
+                <img class="film-photo" src="assets/241.jpg" alt="Memory 02b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">2024</h3>
+                  <p class="text-sm opacity-90">Sora 3ala shawte2 cyprus el gamila</p>
+                </div>
+              </div>
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
+                <img class="film-photo" src="assets/25.jpg" alt="Memory 02b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">2025</h3>
+                  <p class="text-sm opacity-90">Zizo 2ali eno msh rai7 el ahly etameno 🥅 </p>
+                </div>
+              </div>
+
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
+                <img class="film-photo" src="assets/251.jpg" alt="Memory 02b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">2025</h3>
+                  <p class="text-sm opacity-90">La ya mama di BT3OD 😭</p>
+                </div>
+              </div>
+
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
+                <img class="film-photo" src="assets/h1.jpg" alt="Memory 02b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">2016</h3>
+                  <p class="text-sm opacity-90">Special moments</p>
+                </div>
+              </div>
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
+                <img class="film-photo" src="assets/h2.jpg" alt="Memory 02b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">2017</h3>
+                  <p class="text-sm opacity-90">Special moments</p>
+                </div>
+              </div>
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
+                <img class="film-photo" src="assets/h3.jpg" alt="Memory 02b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">2018</h3>
+                  <p class="text-sm opacity-90">Special moments</p>
+                </div>
+              </div>
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
+                <img class="film-photo" src="assets/h4.jpg" alt="Memory 02b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">2019</h3>
+                  <p class="text-sm opacity-90">Special moments</p>
+                </div>
+              </div>
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
+                <img class="film-photo" src="assets/h5.jpg" alt="Memory 02b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">2020</h3>
+                  <p class="text-sm opacity-90">Special moments</p>
+                </div>
+              </div>
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
+                <img class="film-photo" src="assets/h6.jpg" alt="Memory 02b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">2021</h3>
+                  <p class="text-sm opacity-90">Special moments</p>
+                </div>
+              </div>
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
+                <img class="film-photo" src="assets/h7.jpg" alt="Memory 02b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">2022</h3>
+                  <p class="text-sm opacity-90">Special moments</p>
+                </div>
+              </div>
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
+                <img class="film-photo" src="assets/h8.jpg" alt="Memory 02b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">2023</h3>
+                  <p class="text-sm opacity-90">Special moments</p>
+                </div>
+              </div>
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
+                <img class="film-photo" src="assets/h9.jpg" alt="Memory 02b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">2024</h3>
+                  <p class="text-sm opacity-90">Special moments</p>
+                </div>
+              </div>
+              <div class="film-frame" onclick="toggleImageOverlay(this); toggleFilmAnimation(event);" role="button" tabindex="0">
+                <div class="frame-number">02</div>
+                <img class="film-photo" src="assets/h10.jpg" alt="Memory 02b" onerror="this.style.display='none'">
+                <div class="image-overlay">
+                  <h3 class="text-lg font-semibold">2025</h3>
                   <p class="text-sm opacity-90">Special moments</p>
                 </div>
               </div>
