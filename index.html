@@ -148,7 +148,7 @@
       display:flex;
       gap:12px;
       align-items:center;
-      animation: filmScroll 60s linear infinite;
+      animation: filmScroll 90s linear infinite;
     }
     .film-scroll-container.paused { animation-play-state: paused; }
 
@@ -245,11 +245,11 @@
       position:absolute; width:10px; height:12px; opacity:0; transform-origin:center;
       border-radius:2px; will-change: transform, opacity;
     }
-    @keyframes confettiFall {
+    /* @keyframes confettiFall {
       0%{ transform: translateY(-80px) rotate(0deg); opacity:1; }
       70%{ opacity:1; }
       100%{ transform: translateY(110vh) rotate(720deg); opacity:0; }
-    }
+    } */
 
     /* responsiveness tweaks */
     @media (max-width:768px){
@@ -421,6 +421,11 @@
   font-size: 0.75rem;
   font-weight: 500;
 }
+.no-gradient {
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    color: inherit !important;
+  }
 
   </style>
 </head>
@@ -445,13 +450,16 @@
     <header class="text-center py-16 px-6">
       <h1 class="text-4xl md:text-6xl font-extralight mb-4 bounce-in gradient-text">
         Happy Birthday Maloukaaa! 🎂
+        <span class="no-gradient">🎂</span>
       </h1>
+      
       <p class="text-base md:text-lg text-mauve-600 max-w-2xl mx-auto leading-relaxed floating">
         A cozy little website made with love, packed with your favorite memories.
       </p>
       <p class="text-base md:text-lg text-mauve-600 max-w-2xl mx-auto leading-relaxed floating">
         Love you my person, my one and only Tatotiiii!!
       </p>
+
 
       <!-- action buttons -->
       <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4 items-center px-4">
@@ -479,8 +487,8 @@
 
       <section id="gallery" class="py-12">
         <div class="text-center mb-8">
-          <h2 class="text-2xl md:text-3xl font-medium mb-2 gradient-text">29 Years of Tattoutiii</h2>
-          <p class="text-mauve-600">مراحل اكتمال القمر</p>
+          <h2 class="text-2xl md:text-3xl font-medium mb-2 gradient-text"><span class="no-gradient">💖</span> 💖29 Years of Tattoutiii</h2>
+          <p class="text-mauve-600" ><span class="no-gradient">🌑</span>مراحل اكتمال القمر</p>
         </div>
 
         <div class="film-strip card-hover fade-in" style="animation-delay:.1s;">
@@ -773,7 +781,7 @@
     <div class="wish-card" onclick="openWishPopup(0)">
       <div class="emoji">💌</div>
       <h3>Secret Birthday Messages</h3>
-      <p>Click to read heartfelt wishes from your circle.</p>
+      <!-- <p>Click to read heartfelt wishes from your circle.</p> -->
       <div class="tag">18 Messages Waiting</div>
     </div>
   </div>
